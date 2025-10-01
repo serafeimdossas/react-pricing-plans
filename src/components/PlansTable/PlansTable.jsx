@@ -236,7 +236,10 @@ function PlansTable() {
               position={width < 400 ? "top" : "left"}
               open={true}
               arrow={true}
-              disableInteractive={true}
+              appendTo={document.body}
+              popperOptions={{
+                strategy: "fixed",
+              }}
             >
               <span className="price-value-amount">
                 {`${plans_pricing[plan_key].monthly_cost}€`}

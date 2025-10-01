@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./PlansTable.css";
 import "react-tippy/dist/tippy.css";
 import {
@@ -16,7 +16,17 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 function PlansTable() {
+  const [width, setWidth] = useState(window.innerWidth);
   const [showAll, setShowAll] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState("yearly_plan");
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const tableHead = () => {
     return (
@@ -245,17 +255,85 @@ function PlansTable() {
     );
   };
 
-  return (
-    <>
-      <div className="plans-table-container">
-        <table className="plans-table">
-          {tableHead()}
-          {tableBody()}
-        </table>
-      </div>
-      {limitedOfferMessage()}
-    </>
-  );
+  const tableBodyMobile = () => {
+    // get categories from plan
+    const categories = Object.keys(plans[selectedPlan]);
+
+    return (
+      <tbody className="plans-table-body">
+        <tbody>
+          {categories.map((category) => {
+            const features = Object.keys(plans[selectedPlan][category]);
+
+            return (
+              <>
+                {/* Category row */}
+                <tr className="plans-table-category-row">
+                  <td className="plans-table-category-cell">
+                    {features_labels[category].label}
+                  </td>
+                  <td></td>
+                </tr>
+
+                {/* Feature rows */}
+                {features.map((feature) => {
+                  const value = plans[selectedPlan][category][feature];
+
+                  return (
+                    <tr key={feature} className={"plans-table-feature-row"}>
+                      <td className="plans-table-feature-cell">
+                        {features_labels[category].features[feature]}
+                      </td>
+                      <td className={"plans-table-feature-value"}>
+                        {value ? (
+                          <CheckCircleIcon style={{ color: "#0a6b4b" }} />
+                        ) : (
+                          <RemoveIcon />
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </>
+            );
+          })}
+        </tbody>
+      </tbody>
+    );
+  };
+
+  const tableFooterMobile = () => {
+    return null;
+  };
+
+  const desktopView = () => {
+    return (
+      <>
+        <div className="plans-table-container">
+          <table className="plans-table">
+            {tableHead()}
+            {tableBody()}
+          </table>
+        </div>
+        {limitedOfferMessage()}
+      </>
+    );
+  };
+
+  const mobileView = () => {
+    return (
+      <>
+        <div className="plans-table-container-mobile">
+          <table className="plans-table-mobile">
+            {tableBodyMobile()}
+            {tableFooterMobile()}
+          </table>
+        </div>
+      </>
+    );
+  };
+
+  return <>{width > 430 ? desktopView() : mobileView()}</>;
 }
 
 export default PlansTable;

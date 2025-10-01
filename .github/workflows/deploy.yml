@@ -47,4 +47,5 @@ jobs:
           script: |
             cd /var/www/html/react-pricing-plans/
             docker build -t react-pricing-plans .
+            docker rm -f react-pricing-plans >/dev/null 2>&1 || true
             docker run -d -p 3000:80 --name react-pricing-plans react-pricing-plans

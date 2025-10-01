@@ -73,6 +73,10 @@ table {
   border-bottom: 1px solid #e6e9ec;
 }
 
+.last-category-feature-row {
+  border-bottom: 1px solid #b1b4bd;
+}
+
 .plans-table-last-row {
   height: 76px;
 }

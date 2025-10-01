@@ -67,15 +67,21 @@ function PlansTable() {
                         </tr>
 
                         {/* Feature rows */}
-                        {features.map((feature) => {
+                        {features.map((feature, index) => {
                           const values = plans_keys.map(
                             (plan) => plans[plan][category][feature]
                           );
 
+                          const isLastFeature = index === features.length - 1;
+
                           return (
                             <tr
                               key={feature}
-                              className="plans-table-feature-row"
+                              className={
+                                isLastFeature
+                                  ? "plans-table-feature-row last-category-feature-row"
+                                  : "plans-table-feature-row"
+                              }
                             >
                               <td className="plans-table-feature-cell">
                                 {features_labels[category].features[feature]}

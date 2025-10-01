@@ -148,7 +148,7 @@ function PlansTable() {
           <td className="plans-table-last-row-cell">
             {priceContainer("monthly_plan")}
           </td>
-          <td className="plans-table-last-row-cell last-cell rounded-bottom">
+          <td className="plans-table-last-row-cell">
             {priceContainer("yearly_plan")}
           </td>
         </tr>

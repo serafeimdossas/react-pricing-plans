@@ -14,13 +14,13 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 function PlansTable() {
-  const [showAll, setShowAll] = useState(true);
+  const [showAll, setShowAll] = useState(false);
 
   const tableHead = () => {
     return (
       <thead className="plans-table-head">
         <tr className="plans-table-head-row">
-          <td className="plans-table-head-cell"></td>
+          <td className="plans-table-head-cell empty-cell"></td>
           <td className="plans-table-head-cell no-plan-cell">
             {plans_labels.no_plan}
           </td>
@@ -39,75 +39,94 @@ function PlansTable() {
 
     return (
       <tbody className="plans-table-body">
-        {categories.map((category) => {
-          const features = Object.keys(plans.no_plan[category]);
+        <tr>
+          <td colSpan={4} className="no-padding-cell">
+            <div
+              className={`plans-scroll-wrapper ${
+                showAll ? "expanded" : "collapsed"
+              }`}
+            >
+              <table className="inner-table">
+                <tbody>
+                  {categories.map((category) => {
+                    const features = Object.keys(plans.no_plan[category]);
 
-          return (
-            <>
-              {/* Category row */}
-              <tr className="plans-table-category-row">
-                <td className="plans-table-category-cell">
-                  {features_labels[category].label}
-                </td>
-                <td></td>
-                <td></td>
-                <td className="last-cell"></td>
-              </tr>
+                    return (
+                      <>
+                        {/* Category row */}
+                        <tr className="plans-table-category-row">
+                          <td className="plans-table-category-cell">
+                            {features_labels[category].label}
+                          </td>
+                          <td></td>
+                          <td></td>
+                          <td className="last-cell"></td>
+                        </tr>
 
-              {/* Feature rows */}
-              {features.map((feature) => {
-                const values = plans_keys.map(
-                  (plan) => plans[plan][category][feature]
-                );
+                        {/* Feature rows */}
+                        {features.map((feature) => {
+                          const values = plans_keys.map(
+                            (plan) => plans[plan][category][feature]
+                          );
 
-                return (
-                  <tr key={feature} className="plans-table-feature-row">
-                    <td className="plans-table-feature-cell">
-                      {features_labels[category].features[feature]}
-                    </td>
-                    {values.map((val, idx) => {
-                      const isLast = idx === values.length - 1;
-                      return val ? (
-                        <td
-                          key={idx}
-                          className={
-                            isLast
-                              ? "plans-table-feature-value last-cell"
-                              : "plans-table-feature-value"
-                          }
-                        >
-                          <CheckCircleIcon style={{ color: "#0a6b4b" }} />
-                        </td>
-                      ) : (
-                        <td
-                          key={idx}
-                          className={
-                            isLast
-                              ? "plans-table-feature-value last-cell"
-                              : "plans-table-feature-value"
-                          }
-                        >
-                          <RemoveIcon />
-                        </td>
-                      );
-                    })}
-                  </tr>
-                );
-              })}
-            </>
-          );
-        })}
+                          return (
+                            <tr
+                              key={feature}
+                              className="plans-table-feature-row"
+                            >
+                              <td className="plans-table-feature-cell">
+                                {features_labels[category].features[feature]}
+                              </td>
+                              {values.map((val, idx) => {
+                                const isLast = idx === values.length - 1;
+                                return val ? (
+                                  <td
+                                    key={idx}
+                                    className={
+                                      isLast
+                                        ? "plans-table-feature-value last-cell"
+                                        : "plans-table-feature-value"
+                                    }
+                                  >
+                                    <CheckCircleIcon
+                                      style={{ color: "#0a6b4b" }}
+                                    />
+                                  </td>
+                                ) : (
+                                  <td
+                                    key={idx}
+                                    className={
+                                      isLast
+                                        ? "plans-table-feature-value last-cell"
+                                        : "plans-table-feature-value"
+                                    }
+                                  >
+                                    <RemoveIcon />
+                                  </td>
+                                );
+                              })}
+                            </tr>
+                          );
+                        })}
+                      </>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </tr>
         {lastRow()}
       </tbody>
     );
   };
 
   const lastRow = () => {
-    return (
+    return showAll ? (
       <tr className="plans-table-last-row">
         <td className="plans-table-last-row-cell"></td>
         <td className="plans-table-last-row-cell toggle-cell">
-          {showAll ? showMoreLessButton() : null}
+          {showMoreLessButton()}
         </td>
         <td className="plans-table-last-row-cell">
           {priceContainer("monthly_plan")}
@@ -116,6 +135,24 @@ function PlansTable() {
           {priceContainer("yearly_plan")}
         </td>
       </tr>
+    ) : (
+      <>
+        <tr>
+          <td colSpan={4} className="span-toggle-cell">
+            {showMoreLessButton()}
+          </td>
+        </tr>
+        <tr className="plans-table-last-row">
+          <td className="plans-table-last-row-cell"></td>
+          <td className="plans-table-last-row-cell"></td>
+          <td className="plans-table-last-row-cell">
+            {priceContainer("monthly_plan")}
+          </td>
+          <td className="plans-table-last-row-cell last-cell rounded-bottom">
+            {priceContainer("yearly_plan")}
+          </td>
+        </tr>
+      </>
     );
   };
 

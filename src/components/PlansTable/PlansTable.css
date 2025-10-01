@@ -14,6 +14,11 @@
   font-weight: 600;
   padding-left: 15px;
   padding-right: 15px;
+  width: 180px;
+}
+
+.empty-cell {
+  width: 375px;
 }
 
 .no-plan-cell {
@@ -112,4 +117,42 @@ table {
   justify-content: center;
   align-items: center;
   padding-top: 15px;
+}
+
+.plans-scroll-wrapper {
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  position: relative;
+}
+
+.plans-scroll-wrapper.collapsed {
+  max-height: 450px;
+}
+
+.plans-scroll-wrapper.expanded {
+  max-height: 2000px;
+}
+
+.plans-scroll-wrapper.collapsed::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, white, rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.no-padding-cell {
+  padding: 0;
+}
+
+.inner-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.span-toggle-cell .toggle-button {
+  margin: auto;
 }

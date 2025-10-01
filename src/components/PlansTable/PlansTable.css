@@ -180,3 +180,8 @@ table {
   margin-left: 10px;
   opacity: 0.9 !important;
 }
+
+.limited-offer-message {
+  font-size: 0.8rem;
+  color: #616f86;
+}

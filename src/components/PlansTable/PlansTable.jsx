@@ -178,7 +178,7 @@ function PlansTable() {
               sticky={true}
             >
               <span className="price-value-amount">
-                {`${plans_pricing[plan_key].monthly_cost}€ `}
+                {`${plans_pricing[plan_key].monthly_cost}€`}
               </span>
               {` /month`}
             </Tooltip>
@@ -192,7 +192,9 @@ function PlansTable() {
           </p>
         )}
         <p className="price-value-subtitle">
-          {`${plans_pricing[plan_key].yearly_cost}€ /year billed ${
+          {`${plans_pricing[plan_key].yearly_cost}€${
+            plan_key === "yearly_plan" ? "*" : ""
+          }/year billed ${
             plan_key === "monthly_plan" ? "monthly" : "annually"
           }`}
         </p>
@@ -235,13 +237,24 @@ function PlansTable() {
     return <div className="best-value-chip">Best Value</div>;
   };
 
+  const limitedOfferMessage = () => {
+    return (
+      <div className="limited-offer-message">
+        <span>* Limited time offer until 31/12/2025</span>
+      </div>
+    );
+  };
+
   return (
-    <div className="plans-table-container">
-      <table className="plans-table">
-        {tableHead()}
-        {tableBody()}
-      </table>
-    </div>
+    <>
+      <div className="plans-table-container">
+        <table className="plans-table">
+          {tableHead()}
+          {tableBody()}
+        </table>
+      </div>
+      {limitedOfferMessage()}
+    </>
   );
 }
 

@@ -1,0 +1,64 @@
+.plans-table-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.plans-table-head-row {
+  height: 80px;
+}
+
+.plans-table-head-cell {
+  font-size: 18px;
+  color: #0a162e;
+  font-weight: 600;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.no-plan-cell {
+  color: #616f86;
+}
+
+.plans-table-category-row {
+  height: 76px;
+}
+
+.plans-table-category-cell {
+  text-align: left;
+  font-size: 18px;
+  color: #d13800;
+  font-weight: 600;
+  width: 350px;
+}
+
+.plans-table-feature-row {
+  height: 76px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.plans-table-feature-cell {
+  text-align: left;
+}
+
+.plans-table-feature-value {
+  width: 180px;
+}
+
+.last-cell {
+  background-color: #fff3ee;
+}
+
+.rounded-top {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.plans-table-feature-row {
+  border-bottom: 1px solid #e6e9ec;
+}

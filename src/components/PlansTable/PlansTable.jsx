@@ -233,7 +233,7 @@ function PlansTable() {
           <div className="price-value-title">
             <Tooltip
               title="Save 159€!"
-              position="left"
+              position={width < 400 ? "top" : "left"}
               open={true}
               arrow={true}
               disableInteractive={true}

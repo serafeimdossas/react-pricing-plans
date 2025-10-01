@@ -229,12 +229,29 @@ function PlansTable() {
   const priceContainerMobile = (plan_key) => {
     return (
       <div className="price-container">
-        <p className="price-value-title">
-          <span className="price-value-amount">
-            {`${plans_pricing[plan_key].monthly_cost}€ `}
-          </span>
-          {` /month`}
-        </p>
+        {plan_key === "yearly_plan" ? (
+          <p className="price-value-title">
+            <Tooltip
+              title="Save 159€!"
+              position="left"
+              open={true}
+              arrow={true}
+              sticky={true}
+            >
+              <span className="price-value-amount">
+                {`${plans_pricing[plan_key].monthly_cost}€`}
+              </span>
+              {` /month`}
+            </Tooltip>
+          </p>
+        ) : (
+          <p className="price-value-title">
+            <span className="price-value-amount">
+              {`${plans_pricing[plan_key].monthly_cost}€ `}
+            </span>
+            {` /month`}
+          </p>
+        )}
         <p className="price-value-subtitle">
           {`${plans_pricing[plan_key].yearly_cost}€${
             plan_key === "yearly_plan" ? "*" : ""

@@ -230,20 +230,20 @@ function PlansTable() {
     return (
       <div className="price-container">
         {plan_key === "yearly_plan" ? (
-          <Tooltip
-            title="Save 159€!"
-            position="left"
-            open={true}
-            arrow={true}
-            sticky={true}
-          >
-            <p className="price-value-title">
+          <div className="price-value-title">
+            <Tooltip
+              title="Save 159€!"
+              position="left"
+              open={true}
+              arrow={true}
+              sticky={true}
+            >
               <span className="price-value-amount">
                 {`${plans_pricing[plan_key].monthly_cost}€`}
               </span>
               {` /month`}
-            </p>
-          </Tooltip>
+            </Tooltip>
+          </div>
         ) : (
           <p className="price-value-title">
             <span className="price-value-amount">
@@ -311,41 +311,45 @@ function PlansTable() {
 
     return (
       <tbody className="plans-table-body">
-        {categories.map((category) => {
-          const features = Object.keys(plans[selectedPlan][category]);
+        <table>
+          <tbody>
+            {categories.map((category) => {
+              const features = Object.keys(plans[selectedPlan][category]);
 
-          return (
-            <>
-              {/* Category row */}
-              <tr className="plans-table-category-row">
-                <td className="plans-table-category-cell">
-                  {features_labels[category].label}
-                </td>
-                <td></td>
-              </tr>
-
-              {/* Feature rows */}
-              {features.map((feature) => {
-                const value = plans[selectedPlan][category][feature];
-
-                return (
-                  <tr key={feature} className={"plans-table-feature-row"}>
-                    <td className="plans-table-feature-cell">
-                      {features_labels[category].features[feature]}
+              return (
+                <>
+                  {/* Category row */}
+                  <tr className="plans-table-category-row">
+                    <td className="plans-table-category-cell">
+                      {features_labels[category].label}
                     </td>
-                    <td className={"plans-table-feature-value"}>
-                      {value ? (
-                        <CheckCircleIcon style={{ color: "#0a6b4b" }} />
-                      ) : (
-                        <RemoveIcon />
-                      )}
-                    </td>
+                    <td></td>
                   </tr>
-                );
-              })}
-            </>
-          );
-        })}
+
+                  {/* Feature rows */}
+                  {features.map((feature) => {
+                    const value = plans[selectedPlan][category][feature];
+
+                    return (
+                      <tr key={feature} className={"plans-table-feature-row"}>
+                        <td className="plans-table-feature-cell">
+                          {features_labels[category].features[feature]}
+                        </td>
+                        <td className={"plans-table-feature-value"}>
+                          {value ? (
+                            <CheckCircleIcon style={{ color: "#0a6b4b" }} />
+                          ) : (
+                            <RemoveIcon />
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </>
+              );
+            })}
+          </tbody>
+        </table>
       </tbody>
     );
   };

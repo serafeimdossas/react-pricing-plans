@@ -10,6 +10,7 @@ import {
 } from "../../data/data";
 import { Tooltip } from "react-tippy";
 import Button from "../Button/Button";
+import Chip from "@mui/material/Chip";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -336,13 +337,37 @@ function PlansTable() {
 
   const tableFooterMobile = () => {
     return (
-      <tr className="plans-table-last-row">
-        <td className="plans-table-last-row-cell">
-          {selectedPlan === "no_plan"
-            ? null
-            : priceContainerMobile(selectedPlan)}
-        </td>
-      </tr>
+      <>
+        <tr className="plans-table-last-row">
+          <td className="plans-table-last-row-cell">
+            {selectedPlan === "no_plan"
+              ? null
+              : priceContainerMobile(selectedPlan)}
+          </td>
+        </tr>
+        <tr className="plans-table-plan-selection-row-mobile">
+          <td>
+            <Chip
+              label="Without DO+"
+              color="primary"
+              variant={selectedPlan === "no_plan" ? "filled" : "outlined"}
+              onClick={() => setSelectedPlan("no_plan")}
+            />
+            <Chip
+              label="Monthly Plan"
+              color="primary"
+              variant={selectedPlan === "monthly_plan" ? "filled" : "outlined"}
+              onClick={() => setSelectedPlan("monthly_plan")}
+            />
+            <Chip
+              label="Annual Plan"
+              color="primary"
+              variant={selectedPlan === "yearly_plan" ? "filled" : "outlined"}
+              onClick={() => setSelectedPlan("yearly_plan")}
+            />
+          </td>
+        </tr>
+      </>
     );
   };
 

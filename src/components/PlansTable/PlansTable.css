@@ -184,3 +184,16 @@ table {
   font-size: 0.8rem;
   color: #616f86;
 }
+
+.plans-table-plan-selection-row-mobile td {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 20px 10px;
+}
+
+.plans-table-plan-selection-row-mobile td .MuiChip-root {
+  font-size: 0.9rem;
+  height: 30px;
+  margin: 0 5px;
+}

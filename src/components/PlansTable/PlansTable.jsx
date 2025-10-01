@@ -26,6 +26,7 @@ function PlansTable() {
           </td>
           <td className="plans-table-head-cell">{plans_labels.monthly_plan}</td>
           <td className="plans-table-head-cell last-cell rounded-top">
+            {bestValueChip()}
             {plans_labels.yearly_plan}
           </td>
         </tr>
@@ -203,6 +204,10 @@ function PlansTable() {
         )}
       </button>
     );
+  };
+
+  const bestValueChip = () => {
+    return <div className="best-value-chip">Best Value</div>;
   };
 
   return (

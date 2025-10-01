@@ -156,3 +156,17 @@ table {
 .span-toggle-cell .toggle-button {
   margin: auto;
 }
+
+.best-value-chip {
+  background-color: #e9faf4;
+  color: #b35b00;
+  font-weight: 300;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border: 1px solid #b35b00;
+  width: fit-content;
+  position: absolute;
+  margin-left: 50px;
+  margin-top: -45px;
+}

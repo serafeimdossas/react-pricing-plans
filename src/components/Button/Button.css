@@ -4,6 +4,7 @@
   background-color: #0039d8;
   color: #fff;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 .button-secondary {
@@ -13,4 +14,5 @@
   color: #0039d8;
   border: 1px solid #0039d8;
   padding: 10px;
+  margin-bottom: 10px;
 }

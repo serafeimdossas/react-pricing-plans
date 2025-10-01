@@ -225,6 +225,38 @@ function PlansTable() {
     );
   };
 
+  const priceContainerMobile = (plan_key) => {
+    return (
+      <div className="price-container">
+        <p className="price-value-title">
+          <span className="price-value-amount">
+            {`${plans_pricing[plan_key].monthly_cost}€ `}
+          </span>
+          {` /month`}
+        </p>
+        <p className="price-value-subtitle">
+          {`${plans_pricing[plan_key].yearly_cost}€${
+            plan_key === "yearly_plan" ? "*" : ""
+          }/year billed ${
+            plan_key === "monthly_plan" ? "monthly" : "annually"
+          }`}
+        </p>
+        <Button
+          type={"primary"}
+          text={"Start free trial"}
+          onClick={() =>
+            alert(
+              `You selected the ${
+                plan_key === "monthly_plan" ? "monthly" : "annually"
+              } plan`
+            )
+          }
+        />
+        {plan_key === "yearly_plan" ? limitedOfferMessage() : null}
+      </div>
+    );
+  };
+
   const showMoreLessButton = () => {
     return (
       <button className="toggle-button" onClick={() => setShowAll(!showAll)}>
@@ -303,7 +335,15 @@ function PlansTable() {
   };
 
   const tableFooterMobile = () => {
-    return null;
+    return (
+      <tr className="plans-table-last-row">
+        <td className="plans-table-last-row-cell">
+          {selectedPlan === "no_plan"
+            ? null
+            : priceContainerMobile(selectedPlan)}
+        </td>
+      </tr>
+    );
   };
 
   const desktopView = () => {

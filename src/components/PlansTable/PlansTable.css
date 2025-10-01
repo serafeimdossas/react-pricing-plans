@@ -191,12 +191,12 @@ table {
 }
 
 .plans-table-plan-selection-row-mobile td .MuiChip-root {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   height: 30px;
   margin: 0 5px;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 400px) {
   .plans-table-plan-selection-row-mobile td {
     flex-direction: column;
     align-items: center;
@@ -204,7 +204,7 @@ table {
   }
 }
 
-@media (min-width: 451px) {
+@media (min-width: 401px) {
   .plans-table-plan-selection-row-mobile td {
     flex-direction: row;
     justify-content: space-evenly;

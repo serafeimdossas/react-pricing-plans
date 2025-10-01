@@ -197,3 +197,9 @@ table {
   height: 30px;
   margin: 0 5px;
 }
+
+.plans-table-mobile tfoot {
+  position: sticky;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+}

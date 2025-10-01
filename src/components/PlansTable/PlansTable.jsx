@@ -236,7 +236,7 @@ function PlansTable() {
               position="left"
               open={true}
               arrow={true}
-              sticky={true}
+              disableInteractive={true}
             >
               <span className="price-value-amount">
                 {`${plans_pricing[plan_key].monthly_cost}€`}

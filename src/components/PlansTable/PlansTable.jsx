@@ -230,20 +230,20 @@ function PlansTable() {
     return (
       <div className="price-container">
         {plan_key === "yearly_plan" ? (
-          <p className="price-value-title">
-            <Tooltip
-              title="Save 159€!"
-              position="left"
-              open={true}
-              arrow={true}
-              sticky={true}
-            >
+          <Tooltip
+            title="Save 159€!"
+            position="left"
+            open={true}
+            arrow={true}
+            sticky={true}
+          >
+            <p className="price-value-title">
               <span className="price-value-amount">
                 {`${plans_pricing[plan_key].monthly_cost}€`}
               </span>
               {` /month`}
-            </Tooltip>
-          </p>
+            </p>
+          </Tooltip>
         ) : (
           <p className="price-value-title">
             <span className="price-value-amount">
@@ -311,43 +311,41 @@ function PlansTable() {
 
     return (
       <tbody className="plans-table-body">
-        <tbody>
-          {categories.map((category) => {
-            const features = Object.keys(plans[selectedPlan][category]);
+        {categories.map((category) => {
+          const features = Object.keys(plans[selectedPlan][category]);
 
-            return (
-              <>
-                {/* Category row */}
-                <tr className="plans-table-category-row">
-                  <td className="plans-table-category-cell">
-                    {features_labels[category].label}
-                  </td>
-                  <td></td>
-                </tr>
+          return (
+            <>
+              {/* Category row */}
+              <tr className="plans-table-category-row">
+                <td className="plans-table-category-cell">
+                  {features_labels[category].label}
+                </td>
+                <td></td>
+              </tr>
 
-                {/* Feature rows */}
-                {features.map((feature) => {
-                  const value = plans[selectedPlan][category][feature];
+              {/* Feature rows */}
+              {features.map((feature) => {
+                const value = plans[selectedPlan][category][feature];
 
-                  return (
-                    <tr key={feature} className={"plans-table-feature-row"}>
-                      <td className="plans-table-feature-cell">
-                        {features_labels[category].features[feature]}
-                      </td>
-                      <td className={"plans-table-feature-value"}>
-                        {value ? (
-                          <CheckCircleIcon style={{ color: "#0a6b4b" }} />
-                        ) : (
-                          <RemoveIcon />
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </>
-            );
-          })}
-        </tbody>
+                return (
+                  <tr key={feature} className={"plans-table-feature-row"}>
+                    <td className="plans-table-feature-cell">
+                      {features_labels[category].features[feature]}
+                    </td>
+                    <td className={"plans-table-feature-value"}>
+                      {value ? (
+                        <CheckCircleIcon style={{ color: "#0a6b4b" }} />
+                      ) : (
+                        <RemoveIcon />
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </>
+          );
+        })}
       </tbody>
     );
   };
@@ -355,35 +353,39 @@ function PlansTable() {
   const tableFooterMobile = () => {
     return (
       <>
-        <tr className="plans-table-last-row">
-          <td className="plans-table-last-row-cell">
-            {selectedPlan === "no_plan"
-              ? null
-              : priceContainerMobile(selectedPlan)}
-          </td>
-        </tr>
-        <tr className="plans-table-plan-selection-row-mobile">
-          <td>
-            <Chip
-              label="Without DO+"
-              color="primary"
-              variant={selectedPlan === "no_plan" ? "filled" : "outlined"}
-              onClick={() => setSelectedPlan("no_plan")}
-            />
-            <Chip
-              label="Monthly Plan"
-              color="primary"
-              variant={selectedPlan === "monthly_plan" ? "filled" : "outlined"}
-              onClick={() => setSelectedPlan("monthly_plan")}
-            />
-            <Chip
-              label="Annual Plan"
-              color="primary"
-              variant={selectedPlan === "yearly_plan" ? "filled" : "outlined"}
-              onClick={() => setSelectedPlan("yearly_plan")}
-            />
-          </td>
-        </tr>
+        <tfoot>
+          <tr className="plans-table-last-row">
+            <td className="plans-table-last-row-cell">
+              {selectedPlan === "no_plan"
+                ? null
+                : priceContainerMobile(selectedPlan)}
+            </td>
+          </tr>
+          <tr className="plans-table-plan-selection-row-mobile">
+            <td>
+              <Chip
+                label="Without DO+"
+                color="primary"
+                variant={selectedPlan === "no_plan" ? "filled" : "outlined"}
+                onClick={() => setSelectedPlan("no_plan")}
+              />
+              <Chip
+                label="Monthly Plan"
+                color="primary"
+                variant={
+                  selectedPlan === "monthly_plan" ? "filled" : "outlined"
+                }
+                onClick={() => setSelectedPlan("monthly_plan")}
+              />
+              <Chip
+                label="Annual Plan"
+                color="primary"
+                variant={selectedPlan === "yearly_plan" ? "filled" : "outlined"}
+                onClick={() => setSelectedPlan("yearly_plan")}
+              />
+            </td>
+          </tr>
+        </tfoot>
       </>
     );
   };

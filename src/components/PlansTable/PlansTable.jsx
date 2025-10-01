@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./PlansTable.css";
 import {
   plans,
@@ -9,8 +10,12 @@ import {
 import Button from "../Button/Button";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RemoveIcon from "@mui/icons-material/Remove";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 function PlansTable() {
+  const [showAll, setShowAll] = useState(true);
+
   const tableHead = () => {
     return (
       <thead className="plans-table-head">
@@ -92,17 +97,25 @@ function PlansTable() {
             </>
           );
         })}
-        <tr className="plans-table-last-row">
-          <td className="plans-table-last-row-cell"></td>
-          <td className="plans-table-last-row-cell"></td>
-          <td className="plans-table-last-row-cell">
-            {priceContainer("monthly_plan")}
-          </td>
-          <td className="plans-table-last-row-cell last-cell rounded-bottom">
-            {priceContainer("yearly_plan")}
-          </td>
-        </tr>
+        {lastRow()}
       </tbody>
+    );
+  };
+
+  const lastRow = () => {
+    return (
+      <tr className="plans-table-last-row">
+        <td className="plans-table-last-row-cell"></td>
+        <td className="plans-table-last-row-cell toggle-cell">
+          {showAll ? showMoreLessButton() : null}
+        </td>
+        <td className="plans-table-last-row-cell">
+          {priceContainer("monthly_plan")}
+        </td>
+        <td className="plans-table-last-row-cell last-cell rounded-bottom">
+          {priceContainer("yearly_plan")}
+        </td>
+      </tr>
     );
   };
 
@@ -134,6 +147,24 @@ function PlansTable() {
           />
         </>
       </div>
+    );
+  };
+
+  const showMoreLessButton = () => {
+    return (
+      <button className="toggle-button" onClick={() => setShowAll(!showAll)}>
+        {showAll ? (
+          <>
+            <span>Show less</span>
+            <ExpandLessIcon />
+          </>
+        ) : (
+          <>
+            <span>Show more</span>
+            <ExpandMoreIcon />
+          </>
+        )}
+      </button>
     );
   };
 

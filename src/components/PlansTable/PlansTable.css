@@ -94,3 +94,22 @@ table {
   width: 50%;
   text-align: center;
 }
+
+.toggle-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #002ead;
+  text-decoration: underline;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+}

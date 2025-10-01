@@ -170,3 +170,9 @@ table {
   margin-left: 50px;
   margin-top: -45px;
 }
+
+.tippy-tooltip {
+  font-size: 0.8rem !important;
+  margin-left: 10px;
+  opacity: 0.9 !important;
+}

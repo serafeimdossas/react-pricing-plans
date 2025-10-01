@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./PlansTable.css";
+import "react-tippy/dist/tippy.css";
 import {
   plans,
   plans_keys,
@@ -7,6 +8,7 @@ import {
   features_labels,
   plans_pricing,
 } from "../../data/data";
+import { Tooltip } from "react-tippy";
 import Button from "../Button/Button";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -160,12 +162,29 @@ function PlansTable() {
   const priceContainer = (plan_key) => {
     return (
       <div className="price-container">
-        <p className="price-value-title">
-          <span className="price-value-amount">
-            {`${plans_pricing[plan_key].monthly_cost}€ `}
-          </span>
-          {` /month`}
-        </p>
+        {plan_key === "yearly_plan" ? (
+          <p className="price-value-title">
+            <Tooltip
+              title="Save 159€!"
+              position="right"
+              open={true}
+              arrow={true}
+              sticky={true}
+            >
+              <span className="price-value-amount">
+                {`${plans_pricing[plan_key].monthly_cost}€ `}
+              </span>
+              {` /month`}
+            </Tooltip>
+          </p>
+        ) : (
+          <p className="price-value-title">
+            <span className="price-value-amount">
+              {`${plans_pricing[plan_key].monthly_cost}€ `}
+            </span>
+            {` /month`}
+          </p>
+        )}
         <p className="price-value-subtitle">
           {`${plans_pricing[plan_key].yearly_cost}€ /year billed ${
             plan_key === "monthly_plan" ? "monthly" : "annually"

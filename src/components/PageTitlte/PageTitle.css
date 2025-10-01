@@ -1,10 +1,10 @@
-@media (max-width: 430px) {
+@media (max-width: 1280px) {
   .title {
     font-size: 26px;
   }
 }
 
-@media (min-width: 431px) {
+@media (min-width: 1281px) {
   .page-title-container {
     width: 1280px;
   }

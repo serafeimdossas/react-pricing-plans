@@ -203,3 +203,8 @@ table {
   bottom: 0;
   background: rgba(255, 255, 255, 0.8);
 }
+
+.plans-table-container-mobile {
+  display: flex;
+  justify-content: center;
+}

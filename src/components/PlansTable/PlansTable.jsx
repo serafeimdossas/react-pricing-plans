@@ -421,7 +421,7 @@ function PlansTable() {
     );
   };
 
-  return <>{width > 430 ? desktopView() : mobileView()}</>;
+  return <>{width > 1280 ? desktopView() : mobileView()}</>;
 }
 
 export default PlansTable;

@@ -66,6 +66,17 @@ export const plans_labels = {
 
 export const plans_keys = ["no_plan", "monthly_plan", "yearly_plan"];
 
+export const plans_pricing = {
+  monthly_plan: {
+    monthly_cost: 19,
+    yearly_cost: 228,
+  },
+  yearly_plan: {
+    monthly_cost: 5.75,
+    yearly_cost: 69,
+  },
+};
+
 export const features_labels = {
   real_time_care: {
     label: "Accessible, real time care",

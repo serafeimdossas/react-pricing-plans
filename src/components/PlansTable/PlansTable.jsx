@@ -4,7 +4,9 @@ import {
   plans_keys,
   plans_labels,
   features_labels,
+  plans_pricing,
 } from "../../data/data";
+import Button from "../Button/Button";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RemoveIcon from "@mui/icons-material/Remove";
 
@@ -90,7 +92,48 @@ function PlansTable() {
             </>
           );
         })}
+        <tr className="plans-table-last-row">
+          <td className="plans-table-last-row-cell"></td>
+          <td className="plans-table-last-row-cell"></td>
+          <td className="plans-table-last-row-cell">
+            {priceContainer("monthly_plan")}
+          </td>
+          <td className="plans-table-last-row-cell last-cell rounded-bottom">
+            {priceContainer("yearly_plan")}
+          </td>
+        </tr>
       </tbody>
+    );
+  };
+
+  const priceContainer = (plan_key) => {
+    return (
+      <div className="price-container">
+        <p className="price-value-title">
+          <span className="price-value-amount">
+            {`${plans_pricing[plan_key].monthly_cost}€ `}
+          </span>
+          {` /month`}
+        </p>
+        <p className="price-value-subtitle">
+          {`${plans_pricing[plan_key].yearly_cost}€ /year billed ${
+            plan_key === "monthly_plan" ? "monthly" : "annually"
+          }`}
+        </p>
+        <>
+          <Button
+            type={plan_key === "monthly_plan" ? "secondary" : "primary"}
+            text={"Start free trial"}
+            onClick={() =>
+              alert(
+                `You selected the ${
+                  plan_key === "monthly_plan" ? "monthly" : "annually"
+                } plan`
+              )
+            }
+          />
+        </>
+      </div>
     );
   };
 

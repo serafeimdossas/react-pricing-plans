@@ -1,0 +1,16 @@
+.button-primary {
+  font-size: 0.8rem;
+  font-weight: 500;
+  background-color: #0039d8;
+  color: #fff;
+  padding: 10px;
+}
+
+.button-secondary {
+  font-size: 0.8rem;
+  font-weight: 500;
+  background-color: #fff;
+  color: #0039d8;
+  border: 1px solid #0039d8;
+  padding: 10px;
+}

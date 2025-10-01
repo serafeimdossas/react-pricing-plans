@@ -55,10 +55,42 @@
   border-top-right-radius: 16px;
 }
 
+.rounded-bottom {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
 table {
   border-collapse: collapse;
 }
 
 .plans-table-feature-row {
   border-bottom: 1px solid #e6e9ec;
+}
+
+.plans-table-last-row {
+  height: 76px;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.price-value-title {
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+.price-value-amount {
+  font-size: 24px;
+}
+
+.price-value-subtitle {
+  font-size: 0.8rem;
+  color: #616f86;
+  width: 50%;
+  text-align: center;
 }

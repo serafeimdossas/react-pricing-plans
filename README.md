@@ -1,16 +1,29 @@
-# React + Vite
+# React Pricing Plans
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React Pricing Plans is a tiers comparison table built with React and Vite. It showcases monthly and annual subscription tiers, highlighting the features and savings associated with each plan to help visitors choose the best option for their needs.
 
-Currently, two official plugins are available:
+## Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Plan cards:** Compare plans side by side with clear feature availability indicators.
+- **Responsive layout:** Adapts between desktop and smaller viewports with expandable sections for long feature lists.
 
-## React Compiler
+## Installation
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/serafeimdossas/react-pricing-plans.git
+   cd react-pricing-plans
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run project in development environment:
+   ```bash
+   npm run dev
+   ```
 
-## Expanding the ESLint configuration
+## Scripts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `npm run dev` – Start the development server with hot module replacement.
+- `npm run build` – Produce an optimized production build in the `dist` directory.

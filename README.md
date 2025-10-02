@@ -2,6 +2,10 @@
 
 React Pricing Plans is a tiers comparison table built with React and Vite. It showcases monthly and annual subscription tiers, highlighting the features and savings associated with each plan to help visitors choose the best option for their needs.
 
+## Live Demo
+
+- Live version of this project: [Live-Demo](https://pricing-plans.byserafeim.dev/)
+
 ## Key Features
 
 - **Plan cards:** Compare plans side by side with clear feature availability indicators.
